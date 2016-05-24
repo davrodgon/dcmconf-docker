@@ -1,18 +1,21 @@
-FROM java:8-jre
+FROM java:openjdk-8-jre
 
 MAINTAINER David Rodriguez davrodgon@users.sf.net
 
-RUN curl -L -o /tmp/installer.jar https://sourceforge.net/projects/privacyguard/files/latest/download
-RUN curl -L -o /tmp/auto-install.xml http://sourceforge.net/projects/privacyguard/files/1.4.4/dcmconf-auto-install.xml/download
+RUN curl -L -o /tmp/dcmconf-installer.jar https://sourceforge.net/projects/privacyguard/files/latest/download
+RUN curl -L -o /tmp/auto-install.xml https://sourceforge.net/projects/privacyguard/files/1.4.6/auto-instal.xml/download
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64 
+RUN mkdir /opt/dcmconf
 
-RUN java -jar /tmp/installer.jar /tmp/auto-install.xml 
+RUN java -jar /tmp/dcmconf-installer.jar /tmp/auto-install.xml
 
-RUN rm /tmp/installer.jar /tmp/auto-install.xml
+RUN rm /tmp/dcmconf-installer.jar /tmp/auto-install.xml
+
+EXPOSE 11112
 
 WORKDIR /opt/dcmconf/bin
 
+VOLUME /opt/dcmconf/logs 
 VOLUME /opt/dcmconf/data 
 VOLUME /opt/dcmconf/etc 
 
