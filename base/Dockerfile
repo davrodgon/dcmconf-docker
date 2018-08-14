@@ -1,4 +1,4 @@
-FROM java:openjdk-8-jre
+FROM openjdk:8-jre
 
 MAINTAINER David Rodriguez davrodgon@users.sf.net
 
@@ -11,11 +11,10 @@ RUN java -jar /tmp/dcmconf-installer.jar /tmp/auto-install.xml
 
 RUN rm /tmp/dcmconf-installer.jar /tmp/auto-install.xml
 
+COPY logback.xml /opt/dcmconf/bin
 
 WORKDIR /opt/dcmconf/bin
 
-VOLUME /opt/dcmconf/logs 
 VOLUME /opt/dcmconf/data 
 VOLUME /opt/dcmconf/etc 
-
 
