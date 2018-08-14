@@ -11,7 +11,6 @@ RUN java -jar /tmp/dcmconf-installer.jar /tmp/auto-install.xml
 
 RUN rm /tmp/dcmconf-installer.jar /tmp/auto-install.xml
 
-EXPOSE 11112
 
 WORKDIR /opt/dcmconf/bin
 
