@@ -18,3 +18,5 @@ WORKDIR /opt/dcmconf/bin
 VOLUME /opt/dcmconf/data 
 VOLUME /opt/dcmconf/etc 
 
+ENTRYPOINT ["/bin/bash"]
+
