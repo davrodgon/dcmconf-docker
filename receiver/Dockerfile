@@ -4,6 +4,6 @@ MAINTAINER David Rodriguez davrodgon@users.sf.net
 
 EXPOSE 11112
 
-CMD ./receiver.sh
+CMD ["./receiver.sh"]
 
 
